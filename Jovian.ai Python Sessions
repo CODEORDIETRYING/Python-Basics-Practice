@@ -1,0 +1,23 @@
+choices = [
+           {'City':'Paris','Return Flight':200, 'Hotel Cost':20, 'Car rental':200},
+           {'City':'London','Return Flight':250, 'Hotel Cost':30, 'Car rental':120},
+           {'City':'Dubai','Return Flight':370, 'Hotel Cost':15, 'Car rental':80},
+           {'City':'Mumbai','Return Flight':450, 'Hotel Cost':10, 'Car rental':70}
+]
+
+import numpy as np
+def cost_of_trip (options):
+  a=[]
+  b=[]
+  for i in options:
+    for key, value in i.items():
+      if key == 'City':
+        a.append(value)
+    b.append(np.sum(value for key, value in i.items() if key!='City'))
+
+  total=dict(zip(a,b))
+
+  mini=min(total,key=total.get)
+  return mini
+  
+  cost_of_trip(choices)
